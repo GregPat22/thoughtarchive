@@ -143,7 +143,6 @@ export default function Home() {
     setHoveringButton(false);
     setView("dashboard");
   };
-  const goToEssays = () => setView("essays");
   const goToWho = () => setView("who");
   const goToHero = () => setView("hero");
 
@@ -167,8 +166,8 @@ export default function Home() {
           >
             {/* Name — top right */}
             <motion.span
-              className={`absolute inset-x-0 top-4 z-20 text-center whitespace-nowrap text-[11px] font-normal tracking-wide sm:top-6 sm:text-xs transition-colors duration-300 ${
-                isHoveringButton ? "text-[#0a0a0a]" : "text-foreground/50"
+              className={`absolute inset-x-0 top-4 z-20 text-center whitespace-nowrap text-base font-normal tracking-wide sm:top-6 sm:text-lg transition-colors duration-300 ${
+                isHoveringButton ? "text-[#0a0a0a]" : "text-foreground/80"
               }`}
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
@@ -177,29 +176,29 @@ export default function Home() {
               Greg Patini
             </motion.span>
 
-            {/* Location — bottom right */}
+            {/* Location — bottom center */}
             <motion.div
-              className={`absolute bottom-4 right-4 z-20 sm:bottom-6 sm:right-8 transition-colors duration-300 ${
-                isHoveringButton ? "text-[#0a0a0a]" : "text-foreground/50"
+              className={`absolute bottom-4 left-1/2 z-20 -translate-x-1/2 sm:bottom-6 transition-colors duration-300 ${
+                isHoveringButton ? "text-[#0a0a0a]" : "text-foreground/80"
               }`}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.5 }}
             >
-              <span className={`flex items-center justify-end gap-1 whitespace-nowrap text-right text-[9px] font-normal uppercase tracking-[0.15em] sm:text-[10px] transition-colors duration-300 ${
-                isHoveringButton ? "text-[#0a0a0a]/40" : "text-foreground/30"
+              <span className={`flex items-center justify-center gap-1.5 whitespace-nowrap text-center text-sm font-normal uppercase tracking-[0.15em] sm:text-base transition-colors duration-300 ${
+                isHoveringButton ? "text-[#0a0a0a]/60" : "text-foreground/60"
               }`}>
-                Location
+                Locations
                 <span className="relative flex size-1.5">
                   <span className="absolute inline-flex size-full animate-ping rounded-full bg-green-400 opacity-100 duration-1000" />
                   <span className="relative inline-flex size-1.5 rounded-full bg-green-500" />
                 </span>
               </span>
-              <div className="relative mt-0.5 h-5 overflow-hidden sm:h-5">
+              <div className="relative mt-0.5 h-6 overflow-hidden sm:h-6">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={LOCATIONS[locationIndex]}
-                    className="block whitespace-nowrap text-right text-[11px] font-normal leading-5 sm:text-xs sm:leading-5"
+                    className="block whitespace-nowrap text-center text-sm font-normal leading-6 sm:text-base sm:leading-6"
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -20, opacity: 0 }}
@@ -364,7 +363,7 @@ export default function Home() {
             }}
             style={{ transformOrigin: "50% 50%" }}
           >
-            <Dashboard onBack={goToHero} onEssays={goToEssays} onWho={goToWho} />
+            <Dashboard onBack={goToHero} onWho={goToWho} />
           </motion.div>
         ) : view === "essays" ? (
           <motion.div

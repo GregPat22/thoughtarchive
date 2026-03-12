@@ -9,7 +9,9 @@
       "Bash(curl -L \"https://api.motion.dev/registry.tgz?package=motion-plus&version=2.11.0&token=2145329210898e40605cfa007c59055ba655637d15bbefa9f785dcfec2bf1d02\" -o /tmp/motion-plus-2.11.0.tgz)",
       "Bash(pnpm run:*)",
       "Bash(npm run:*)",
-      "Bash(npm i:*)"
+      "Bash(npm i:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx next:*)"
     ]
   }
 }
