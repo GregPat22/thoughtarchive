@@ -511,6 +511,7 @@ export function WhoSection({
   const [gregStarted, setGregStarted] = useState(false);
   const [gregFocused, setGregFocused] = useState(false);
   const [flameFrame, setFlameFrame] = useState(0);
+  const [sofiaResponse, setSofiaResponse] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const gregInputRef = useRef<HTMLInputElement>(null);
   const rocketLaunchedRef = useRef(false);
@@ -553,15 +554,23 @@ export function WhoSection({
   }, [phase]);
 
   const handleSubmit = useCallback(() => {
-    if (inputValue.trim().toLowerCase() === "/who") {
+    const cmd = inputValue.trim().toLowerCase();
+    if (cmd === "/who") {
       setPhase("rocket");
+    } else if (cmd === "/sofia") {
+      setSofiaResponse("58 -'9");
+      setInputValue("");
     }
   }, [inputValue]);
 
   const handleGregSubmit = useCallback(() => {
-    if (gregInputValue.trim().toLowerCase() === "/greg") {
+    const cmd = gregInputValue.trim().toLowerCase();
+    if (cmd === "/greg") {
       setGregStarted(true);
       onGreg?.();
+    } else if (cmd === "/sofia") {
+      setSofiaResponse("58 -'9");
+      setGregInputValue("");
     }
   }, [gregInputValue, onGreg]);
 
@@ -687,6 +696,18 @@ export function WhoSection({
               >
                 hint: /who
               </motion.p>
+
+              {sofiaResponse && (
+                <motion.p
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="text-sm text-[#64b5f6]/70 sm:text-base"
+                  style={{ textShadow: "0 0 8px rgba(100,181,246,0.3)" }}
+                >
+                  {sofiaResponse}
+                </motion.p>
+              )}
             </motion.div>
           )}
         </AnimatePresence>
@@ -833,6 +854,18 @@ export function WhoSection({
                         )}
                       </div>
                     </div>
+
+                    {sofiaResponse && !gregStarted && (
+                      <motion.p
+                        initial={{ opacity: 0, y: 4 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="text-sm text-[#64b5f6]/70 sm:text-base"
+                        style={{ textShadow: "0 0 8px rgba(100,181,246,0.3)" }}
+                      >
+                        {sofiaResponse}
+                      </motion.p>
+                    )}
 
                     {/* ── Greg typewriter output ── */}
                     {gregStarted && (
