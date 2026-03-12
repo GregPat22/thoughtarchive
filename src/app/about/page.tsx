@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Learn more about Greg Patini (Gregorio Patini) — engineer, developer, and founder based between Bologna and San Francisco.",
+  alternates: { canonical: "/about" },
+};
 
 export default function About() {
   return (

@@ -16,7 +16,9 @@
       "Bash(git rebase:*)",
       "Bash(git stash:*)",
       "Bash(git push:*)",
-      "Bash(npx vercel:*)"
+      "Bash(npx vercel:*)",
+      "Bash(grep -r \"domain\\\\|@example\\\\|gregpatini\\\\|inartenino\" /Users/inartenino/Desktop/Coding/thoughtarchive/src --include=*.ts --include=*.tsx --include=*.json)",
+      "Bash(grep -r \"http\\\\|mailto\\\\|@\" /Users/inartenino/Desktop/Coding/thoughtarchive/src --include=*.tsx --include=*.ts)"
     ]
   }
 }
